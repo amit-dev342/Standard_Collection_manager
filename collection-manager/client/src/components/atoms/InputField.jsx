@@ -7,8 +7,6 @@ const InputField = ({ value, onChange, setPositon }) => {
     const input = inputRef.current;
     if (input) {
       const { selectionStart } = input;
-
-      // Create a dummy div to calculate the cursor position
       const dummyDiv = document.createElement("div");
       dummyDiv.style.position = "absolute";
       dummyDiv.style.whiteSpace = "pre-wrap";
