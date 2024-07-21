@@ -34,8 +34,20 @@ const useValidation = () => {
         } else {
             setShowDropdown(false);
             setErrorMessage('');
+            handleColumnChange(value);
         }
     };
+
+    const handleColumnChange = (value) => {
+        const match = value.match(/And\s(.+)/i);   
+        if (match) {
+          const columns = match[1].split(',').map(column => column.trim());
+          const validColumns = columns.every(value => availableColumns.includes(value));
+          validColumns && setSelectedColumns(columns);
+        } else {
+          setSelectedColumns([]);
+        }
+      };
 
     const handleAtCollectionSymbol = () => {
         setShowDropdown(true);
